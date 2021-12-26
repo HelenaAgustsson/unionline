@@ -13,7 +13,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
 
-class Menu extends Component {
+class Menu extends React.Component {
   render() {
     return (
       <Container>
@@ -37,7 +37,9 @@ ReactDOM.render(
     <Menu />
     <Routes>
     <Route path="/" element={<Home />} ></ Route>
-    <Route path="/students" element={<StudentList />} ></Route>
+    <Route exact path="/students" element={<StudentList />} ></Route>
+    
+    <Route exact path="/students/:id" element={<Student />} ></Route>
     <Route path="/universities" element={<UniList />} ></Route>
     </Routes>
     
