@@ -9,21 +9,18 @@ import uniService from './services/uni-service';
 
 
 export class StudentList extends Component {
-    students = [];
+  students = [];
+  universities=[];
   render() {
     return (
       <Container>
         <Card title="Student List">
             <Row>
-              <Column width="1">ID</Column>
               <Column width="3">Name</Column>
             </Row>
             {this.students.map((student) => (
             <Row key={student.id}>
-            <Column width="1">{student.id}</Column>
-            <Column width="3">{student.name}</Column>
             <Column width="3"> <NavLink to={'/students/'+student.id}>{student.name}</NavLink></Column>
-            
             </Row>
           ))}</Card>
           </Container>
