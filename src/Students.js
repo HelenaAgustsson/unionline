@@ -4,7 +4,9 @@ import { NavLink} from 'react-router-dom';
 import { Component } from 'react-simplified';
 import studentService from './services/studentservice';
 import { Card, Row, Column, Container } from './widgets';
-import uniService from './services/uni-service';
+import uniService from './services/uniservice';
+ 
+
 
 
 
@@ -37,12 +39,18 @@ export class Student extends Component {
   student = {};
   universities=[];
   uni={};
+  
   render() {
     return (
       <Container>
-        <Card title={this.student.name}>
-        <Row><Column>
-        {this.uni.name}
+        <Card>
+        <Row>
+          <Column width="3">
+          <img src={this.student.img} className='img-fluid rounded-circle' />
+          </Column>
+          <Column width="3">
+            <h2>{this.student.name}</h2> 
+            {this.uni.name}
         </Column></Row>
       </Card></Container>
       

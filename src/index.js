@@ -6,6 +6,7 @@ import App from './App';
 import{ StudentList, Student} from './Students';
 import { Component } from 'react-simplified';
 import {UniList, Uni} from './universities';
+import { ProgramList } from './programs';
 import { Home } from './Home';
 import { Heading, Container } from './widgets';
 import reportWebVitals from './reportWebVitals';
@@ -24,6 +25,9 @@ class Menu extends React.Component {
           Students
         </NavLink>{' '}
         <NavLink to="/universities">
+          Universities
+        </NavLink>{' '}
+        <NavLink to="/programs">
           Programs
         </NavLink>{' '}
       </Container>
@@ -41,6 +45,7 @@ ReactDOM.render(
     <Route exact path="/students/:id" element={<Student />} ></Route>
     <Route path="/universities" element={<UniList />} ></Route>
     <Route exact path="/universities/:id" element={<Uni />} ></Route>
+    <Route path="/programs" element={<ProgramList />} ></Route>
     </Routes>
     
   </HashRouter>,

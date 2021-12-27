@@ -8,7 +8,7 @@ export class Home extends Component {
     render() {
         return (
             <Container>
-                <Card title="Find students, universities and degrees right here in the StudAdm portal"></Card>
+                <Card title="Find students, universities and degrees right here in the UniOnline portal"></Card>
             </Container>
         )
     }
