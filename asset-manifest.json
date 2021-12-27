@@ -1,15 +1,14 @@
 {
   "files": {
     "main.css": "/unionline/static/css/main.5740cf87.css",
-    "main.js": "/unionline/static/js/main.677a1bb2.js",
-    "static/media/Karina Pettersen.jpg": "/unionline/static/media/Karina Pettersen.a32740322b8a41bc023b.jpg",
+    "main.js": "/unionline/static/js/main.b2ee069a.js",
     "static/media/logo.svg": "/unionline/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/unionline/index.html",
     "main.5740cf87.css.map": "/unionline/static/css/main.5740cf87.css.map",
-    "main.677a1bb2.js.map": "/unionline/static/js/main.677a1bb2.js.map"
+    "main.b2ee069a.js.map": "/unionline/static/js/main.b2ee069a.js.map"
   },
   "entrypoints": [
     "static/css/main.5740cf87.css",
-    "static/js/main.677a1bb2.js"
+    "static/js/main.b2ee069a.js"
   ]
 }
