@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { NavLink, HashRouter, Routes, Route, Router } from 'react-router-dom';
+import { NavLink, HashRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
-import App from './App';
+//import App from './App';
 import{ StudentList, Student} from './Students';
-import { Component } from 'react-simplified';
+//import { Component } from 'react-simplified';
 import {UniList, Uni} from './universities';
-import { ProgramList } from './programs';
+import { ProgramList, Program } from './programs';
 import { Home } from './Home';
 import { Heading, Container } from './widgets';
-import reportWebVitals from './reportWebVitals';
+//import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
@@ -46,6 +46,7 @@ ReactDOM.render(
     <Route path="/universities" element={<UniList />} ></Route>
     <Route exact path="/universities/:id" element={<Uni />} ></Route>
     <Route path="/programs" element={<ProgramList />} ></Route>
+    <Route path="/programs/:id" element={<Program />} ></Route>
     </Routes>
     
   </HashRouter>,

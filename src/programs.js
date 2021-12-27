@@ -7,19 +7,19 @@ import { Card, Row, Column, Container } from './widgets';
 import { NavLink} from 'react-router-dom';
 
 export class ProgramList extends Component {
-    universities = [];
+    programs = [];
   render() {
     return (
       <Container>
-            <Card title="University List">
+            <Card title="Program List">
                 <Row>
                    
-                    <Column width="3">Name</Column>
+                    <Column>Name</Column>
                 </Row>
-            {this.universities.map((university) => (
-                <Row key={university.id}>
+            {this.programs.map((program) => (
+                <Row key={program.id}>
                     
-                    <Column width="3"> <NavLink to={'/universities/'+university.id}>{university.name}</NavLink></Column>
+                    <Column width="3"> <NavLink to={'/programs/'+program.id}>{program.name}</NavLink></Column>
                 </Row>
           ))}</Card>
           </Container>
@@ -27,6 +27,32 @@ export class ProgramList extends Component {
     );
   }
   mounted() {
-    programService.getAll().then((universities)=>{this.universities=universities})
+    programService.getAll().then((programs)=>{this.programs=programs})
   }
 }
+
+export class Program extends Component {
+    programs=[];
+    program={};
+    render() {
+      return (
+        <Container>
+          <Card title={this.program.name}>
+          <Row><Column>
+          {this.program.name}
+          </Column></Row>
+        </Card></Container>
+        
+      )
+    }
+    mounted() {
+        programService.getAll().then((programs)=>{
+          this.programs = programs;
+          let w = window.location.hash;
+          let id = w.match(/\d+/)[0] 
+          this.program = this.programs.find(program=>program.id==id)
+        })
+      
+      
+    }
+  }

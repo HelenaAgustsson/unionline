@@ -18,11 +18,11 @@ export class StudentList extends Component {
       <Container>
         <Card title="Student List">
             <Row>
-              <Column width="3">Name</Column>
+              <Column>Name</Column>
             </Row>
             {this.students.map((student) => (
             <Row key={student.id}>
-            <Column width="3"> <NavLink to={'/students/'+student.id}>{student.name}</NavLink></Column>
+            <Column> <NavLink to={'/students/'+student.id}>{student.name}</NavLink></Column>
             </Row>
           ))}</Card>
           </Container>
@@ -46,9 +46,9 @@ export class Student extends Component {
         <Card>
         <Row>
           <Column width="3">
-          <img src={this.student.img} className='img-fluid rounded-circle' />
+          <img src={this.student.img} className='img-fluid rounded-circle' alt="student profile" />
           </Column>
-          <Column width="3">
+          <Column width="9">
             <h2>{this.student.name}</h2> 
             {this.uni.name}
         </Column></Row>
@@ -60,7 +60,7 @@ export class Student extends Component {
     studentService.getAll().then((students) => {
       this.students = students;
       let w = window.location.hash;
-      let id = parseInt(w[11])
+      let id = w.match(/\d+/)[0] 
       this.student = this.students.find(student=>student.id==id);
       uniService.getAll().then((universities)=>{
         this.universities = universities;
