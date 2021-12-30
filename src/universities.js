@@ -3,8 +3,10 @@ import * as React from 'react';
 import { Component } from 'react-simplified';
 import uniService from './services/uniservice';
 import studentService from './services/studentservice';
+import programService from './services/programservice';
 import { Card, Row, Column, Container, Divider } from './widgets';
 import { NavLink} from 'react-router-dom';
+import { Program } from './programs';
 
 export class UniList extends Component {
     universities = [];
@@ -34,6 +36,7 @@ export class UniList extends Component {
 export class Uni extends Component {
   universities=[];
   students=[];
+  programs=[];
   uni={};
   render() {
     return (
@@ -51,6 +54,15 @@ export class Uni extends Component {
         </Row>
         <Divider />
         <Row><Column>
+        Programs offered at this university:
+        </Column></Row>
+        {this.programs.map((program) => (
+            <Row key={program.id}>
+            <Column> <NavLink to={'/programs/'+program.id}>{program.name}</NavLink></Column>
+            </Row>
+          ))}
+        <Divider />
+        <Row><Column>
         Students at this university:
         </Column></Row>
         {this.students.map((student) => (
@@ -58,6 +70,7 @@ export class Uni extends Component {
             <Column> <NavLink to={'/students/'+student.id}>{student.name}</NavLink></Column>
             </Row>
           ))}
+       
         </Card>
       </Container>
       
@@ -73,6 +86,9 @@ export class Uni extends Component {
       studentService.getAll().then((students)=>{
         this.students=students.filter((student)=>student.uni_id==this.uni.id)
         console.log(this.students)
+      })
+      programService.getAll().then((programs)=>{
+        this.programs = programs.filter((program)=>program.uni_id==this.uni.id);
       })
     
     
