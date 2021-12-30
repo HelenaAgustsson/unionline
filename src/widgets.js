@@ -79,3 +79,108 @@ export class Card extends Component {
       );
     }
   }
+
+  export class Divider extends Component {
+    render() {
+      return (
+        <div className="">
+          <hr></hr>
+        </div>
+      );
+    }
+  }
+
+  class ButtonSuccess extends Component {
+    render() {
+      return (
+        <button
+          type="button"
+          className="btn btn-success"
+          style={
+            this.props.small
+              ? {
+                  padding: '5px 5px',
+                  fontSize: '16px',
+                  lineHeight: '0.7',
+                  display: 'inline',
+                }
+              : {}
+          }
+          onClick={this.props.onClick}
+        >
+          {this.props.children}
+        </button>
+      );
+    }
+  }
+  
+  /**
+   * Renders a danger button using Bootstrap styles.
+   *
+   * Properties: small, onClick
+   */
+  class ButtonDanger extends Component {
+    render() {
+      return (
+        <button
+          type="button"
+          className="btn btn-danger"
+          style={
+            this.props.small
+              ? {
+                  padding: '5px 5px',
+                  fontSize: '16px',
+                  lineHeight: '0.7',
+                }
+              : {}
+          }
+          onClick={this.props.onClick}
+        >
+          {this.props.children}
+        </button>
+      );
+    }
+  }
+  
+  /**
+   * Renders a light button using Bootstrap styles.
+   *
+   * Properties: small, onClick
+   *
+   */
+  
+  class ButtonLight extends Component {
+    render() {
+      return (
+        <button
+          type="button"
+          className="btn btn-light"
+          style={
+            this.props.small
+              ? {
+                  padding: '5px 5px',
+                  fontSize: '16px',
+                  lineHeight: '0.7',
+                }
+              : {}
+          }
+          onClick={this.props.onClick}
+        >
+          {this.props.children}
+        </button>
+      );
+    }
+  }
+  /**
+   * Renders a button using Bootstrap styles.
+   *
+   * Properties: onClick
+   *
+   */
+  export class Button {
+    static Success = ButtonSuccess;
+    static Danger = ButtonDanger;
+    static Light = ButtonLight;
+  }
+  
+  

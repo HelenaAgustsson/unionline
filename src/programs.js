@@ -19,7 +19,7 @@ export class ProgramList extends Component {
             {this.programs.map((program) => (
                 <Row key={program.id}>
                     
-                    <Column width="3"> <NavLink to={'/programs/'+program.id}>{program.name}</NavLink></Column>
+                    <Column> <NavLink to={'/programs/'+program.id}>{program.name}</NavLink></Column>
                 </Row>
           ))}</Card>
           </Container>

@@ -49,7 +49,7 @@ export class Student extends Component {
           <img src={this.student.img} className='img-fluid rounded-circle' alt="student profile" />
           </Column>
           <Column width="9">
-            <h2>{this.student.name}</h2> 
+            <h3>{this.student.name}</h3> 
             {this.uni.name}
         </Column></Row>
       </Card></Container>

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Component } from 'react-simplified';
 import uniService from './services/uniservice';
 import studentService from './services/studentservice';
-import { Card, Row, Column, Container } from './widgets';
+import { Card, Row, Column, Container, Divider } from './widgets';
 import { NavLink} from 'react-router-dom';
 
 export class UniList extends Component {
@@ -38,7 +38,18 @@ export class Uni extends Component {
   render() {
     return (
       <Container>
-        <Card title={this.uni.name}>
+        <Card>
+        <Row>
+        <Column width="1">
+          <img src={this.uni.logo} className='img-fluid' />
+        </Column>
+        <Column width="11">
+          <Row><h3 className='align-text-bottom'>{this.uni.name}</h3>
+            <Column>Campus: {this.uni.campus}</Column>
+          </Row> 
+        </Column>
+        </Row>
+        <Divider />
         <Row><Column>
         Students at this university:
         </Column></Row>
