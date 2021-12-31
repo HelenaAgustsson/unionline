@@ -43,10 +43,10 @@ export class Uni extends Component {
       <Container>
         <Card>
         <Row>
-        <Column width="1">
+        <Column smwidth="1" width="3">
           <img src={this.uni.logo} className='img-fluid' />
         </Column>
-        <Column width="11">
+        <Column smwidth="11" width="9">
           <Row><h3 className='align-text-bottom'>{this.uni.name}</h3>
             <Column>Campus: {this.uni.campus}</Column>
           </Row> 

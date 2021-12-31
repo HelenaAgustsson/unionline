@@ -73,7 +73,14 @@ export class Card extends Component {
   export class Column extends Component {
     render() {
       return (
-        <div className={'col' + (this.props.width ? '-' + this.props.width : '')}>
+        <div className={
+          'col' +
+          (this.props.width ? '-' + this.props.width : '') +
+          (this.props.smwidth ? ' col-sm-' + this.props.smwidth : '') +
+          (this.props.mdwidth ? ' col-md-' + this.props.mdwidth : '') +
+          (this.props.offset ? ' offset-' + this.props.offset : '')
+        }
+>
           {this.props.children}
         </div>
       );
