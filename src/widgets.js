@@ -18,6 +18,7 @@ import { Component } from 'react-simplified';
                 color: '#24272bff',
                 fontFamily: 'Road Rage, cursive',
                 fontSize: '',
+               
               }
             : {}
         }
@@ -31,6 +32,8 @@ import { Component } from 'react-simplified';
     );
   }
 }
+
+
 
 
 export class Container extends Component {

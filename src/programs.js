@@ -2,12 +2,14 @@ import ReactDOM from 'react-dom';
 import * as React from 'react';
 import { Component } from 'react-simplified';
 import uniService from './services/uniservice';
+import studentService from './services/studentservice';
 import programService from './services/programservice'
-import { Card, Row, Column, Container } from './widgets';
+import { Card, Row, Column, Container, Divider } from './widgets';
 import { NavLink} from 'react-router-dom';
 
 export class ProgramList extends Component {
     programs = [];
+   
   render() {
     return (
       <Container>
@@ -21,26 +23,54 @@ export class ProgramList extends Component {
                     
                     <Column> <NavLink to={'/programs/'+program.id}>{program.name}</NavLink></Column>
                 </Row>
-          ))}</Card>
+          ))}
+          
+          </Card>
           </Container>
       
     );
   }
   mounted() {
     programService.getAll().then((programs)=>{this.programs=programs})
+    
   }
+  
 }
 
 export class Program extends Component {
     programs=[];
     program={};
+    uni={};
+    students=[];
     render() {
       return (
         <Container>
-          <Card title={this.program.name}>
+          <Card>
+          <Row>
+          <Column smwidth="1" width="3">
+          <img src={this.program.img} className='img-fluid' />
+          </Column>
+          <Column smwidth="11" width="9">
+            <Row><h3 className='align-text-bottom'>{this.program.name}</h3>
+            </Row> 
+          </Column>
+          </Row>
+          <Divider />
+          <Row>
+            <Column>
+            Offered by {this.uni.name}
+            </Column>
+          </Row>
+          <Divider />
           <Row><Column>
-          {this.program.name}
+          Students on this program:
           </Column></Row>
+          {this.students.map((student) => (
+            <Row key={student.id}>
+            <Column> <NavLink to={'/students/'+student.id}>{student.name}</NavLink></Column>
+            </Row>
+            ))}
+          
         </Card></Container>
         
       )
@@ -52,7 +82,12 @@ export class Program extends Component {
           let id = w.match(/\d+/)[0] 
           this.program = this.programs.find(program=>program.id==id)
         })
-      
-      
+        studentService.getAll().then((students)=>{
+          this.students=students.filter((student)=>student.program_id==this.program.id)
+          console.log(this.students)
+        })
+        uniService.getAll().then((universities)=>{
+          this.uni = universities.find(uni=>uni.id==this.program.uni_id)
+        })
     }
   }

@@ -6,7 +6,6 @@ import studentService from './services/studentservice';
 import programService from './services/programservice';
 import { Card, Row, Column, Container, Divider } from './widgets';
 import { NavLink} from 'react-router-dom';
-import { Program } from './programs';
 
 export class UniList extends Component {
     universities = [];
@@ -36,17 +35,17 @@ export class UniList extends Component {
 export class Uni extends Component {
   universities=[];
   students=[];
-  programs=[];
+  program={};
   uni={};
   render() {
     return (
       <Container>
         <Card>
         <Row>
-        <Column smwidth="1" width="3">
+        <Column width="3" smwidth="1" >
           <img src={this.uni.logo} className='img-fluid' />
         </Column>
-        <Column smwidth="11" width="9">
+        <Column  width="9" smwidth="11">
           <Row><h3 className='align-text-bottom'>{this.uni.name}</h3>
             <Column>Campus: {this.uni.campus}</Column>
           </Row> 
@@ -56,11 +55,11 @@ export class Uni extends Component {
         <Row><Column>
         Programs offered at this university:
         </Column></Row>
-        {this.programs.map((program) => (
-            <Row key={program.id}>
-            <Column> <NavLink to={'/programs/'+program.id}>{program.name}</NavLink></Column>
+        
+            <Row>
+            <Column> <NavLink to={'/programs/'+this.program.id}>{this.program.name}</NavLink></Column>
             </Row>
-          ))}
+          
         <Divider />
         <Row><Column>
         Students at this university:
@@ -82,15 +81,14 @@ export class Uni extends Component {
         let w = window.location.hash;
         let id = w.match(/\d+/)[0] 
         this.uni = this.universities.find(uni=>uni.id==id)
+        programService.getAll().then((programs)=>{
+          this.program = programs.find((program)=>program.uni_id===this.uni.id); 
+        })
+        studentService.getAll().then((students)=>{
+          this.students=students.filter((student)=>student.program_id===this.program.id)
+          console.log(this.students)
+        }) 
       })
-      studentService.getAll().then((students)=>{
-        this.students=students.filter((student)=>student.uni_id==this.uni.id)
-        console.log(this.students)
-      })
-      programService.getAll().then((programs)=>{
-        this.programs = programs.filter((program)=>program.uni_id==this.uni.id);
-      })
-    
-    
+       
   }
 }

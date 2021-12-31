@@ -2,9 +2,11 @@ import ReactDOM from 'react-dom';
 import * as React from 'react';
 import { NavLink} from 'react-router-dom';
 import { Component } from 'react-simplified';
-import studentService from './services/studentservice';
+
 import { Card, Row, Column, Container } from './widgets';
 import uniService from './services/uniservice';
+import studentService from './services/studentservice';
+import programService from './services/programservice';
  
 
 
@@ -35,40 +37,40 @@ export class StudentList extends Component {
 }
 
 export class Student extends Component {
-  students = [];
   student = {};
-  universities=[];
   uni={};
+  program={};
   
   render() {
     return (
       <Container>
         <Card>
         <Row>
-          <Column width="3">
+          <Column width="4" smwidth="2">
           <img src={this.student.img} className='img-fluid rounded-circle' alt="student profile" />
           </Column>
-          <Column width="9">
+          <Column width="8" smwidth="10">
             <h3>{this.student.name}</h3> 
-            {this.uni.name}
-        </Column></Row>
+            <div>Studying {this.program.name} at {this.uni.name} </div> 
+        </Column>
+        </Row>
       </Card></Container>
       
     )
   }
   mounted() {
     studentService.getAll().then((students) => {
-      this.students = students;
       let w = window.location.hash;
       let id = w.match(/\d+/)[0] 
-      this.student = this.students.find(student=>student.id==id);
-      uniService.getAll().then((universities)=>{
-        this.universities = universities;
-        this.uni = this.universities.find(uni=>uni.id==this.student.uni_id)
-      })
-      
-    });
+      this.student = students.find(student=>student.id==id);
+    })
     
+    programService.getAll().then((programs)=>{
+      this.program = programs.find(program=>program.id==this.student.program_id)
+    })
+    uniService.getAll().then((universities)=>{
+      this.uni = universities.find(uni=>uni.id==this.program.uni_id)
+    })
     
   }
 }
