@@ -9,14 +9,27 @@ export class Home extends Component {
     render() {
         return (
             <Container>
-               <div
-                className='hero-image vh-100'
-               >hello</div>
-               
-                <div className='text-center hero-text'>
-                    <h3>Find students, universities and degrees right here in the UniOnline portal</h3>
-                </div>
+              
             </Container>
+        )
+    }
+}
+
+export class Header extends Component {
+    render() {
+        return (
+            <div className="hero-container">
+               <div
+                className='hero-image'
+               ></div>
+               
+                <div className='hero-text'>
+                <div className="jumbotron">
+                 <h1 className="display-1 text-underline">UniOnline</h1>
+                    <h2 className="display-5">The portal for online study</h2>
+                </div>
+                </div>
+            </div>
         )
     }
 }

@@ -7,8 +7,9 @@ import{ StudentList, Student} from './Students';
 //import { Component } from 'react-simplified';
 import {UniList, Uni} from './universities';
 import { ProgramList, Program } from './programs';
-import { Home } from './Home';
+import { Home, Header } from './Home';
 import { Heading, Container } from './widgets';
+
 //import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
@@ -38,7 +39,7 @@ class Menu extends React.Component {
 
 ReactDOM.render(
   <HashRouter>
-    <Heading />
+    <Header />
     <Menu />
     <Routes>
     <Route path="/" element={<Home />} ></ Route>
