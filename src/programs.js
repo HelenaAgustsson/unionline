@@ -47,20 +47,21 @@ export class Program extends Component {
         <Container>
           <Card>
           <Row>
-          <Column smwidth="1" width="3">
+          <Column width="3" smwidth="2" >
           <img src={this.program.img} className='img-fluid' />
           </Column>
-          <Column smwidth="11" width="9">
+          <Column width="9" smwidth="10">
             <Row><h3 className='align-text-bottom'>{this.program.name}</h3>
             </Row> 
-          </Column>
-          </Row>
-          <Divider />
-          <Row>
+            <Row>
             <Column>
             Offered by {this.uni.name}
             </Column>
           </Row>
+          </Column>
+          </Row>
+          <br></br>
+          
           <Divider />
           <Row><Column>
           Students on this program:

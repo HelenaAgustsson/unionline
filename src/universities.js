@@ -51,7 +51,7 @@ export class Uni extends Component {
           </Row> 
         </Column>
         </Row>
-        <Divider />
+        <br></br>
         <Row><Column>
         Programs offered at this university:
         </Column></Row>
